@@ -85,4 +85,20 @@
         try { var r = await fetch('../personal_blog/' + POST_ID + '/title.txt'); titleLines = (await r.text()).split('\n').map(function(l){return l.trim();}); } catch(e){}
     }
     async function fetchProfile() {
-        try { var r = a
+        try { var r = await fetch('../personal_blog/' + POST_ID + '/profile.txt'); profileLines = (await r.text()).split('\n').map(function(l){return l.trim();}); } catch(e){}
+    }
+
+    function renderContent(lang) {
+        var idx = LANG_LINE[lang] !== undefined ? LANG_LINE[lang] : 0;
+        var title = titleLines[idx] || '';
+        document.getElementById('post-eg-title').textContent = title;
+        document.title = title || '貓咪大魔丸 の coslog';
+        document.getElementById('post-eg-back').textContent = BACK_TEXT[lang] || '← 返回';
+        document.getElementById('post-eg-body').textContent = profileLines[idx] || '';
+    }
+    window.addEventListener('languageChanged', function (e) {
+        renderContent((e.detail && e.detail.lang) || localStorage.getItem('lang') || 'zh-tw');
+    });
+</script>
+</body>
+</html>

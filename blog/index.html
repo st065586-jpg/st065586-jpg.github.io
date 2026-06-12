@@ -338,4 +338,45 @@
         stickyNav.classList.toggle('visible', window.scrollY > 320);
     }, { passive: true });
 
-    /* ---- Hover-triggered loop slideshow -
+    /* ---- Hover-triggered loop slideshow ---- */
+    document.querySelectorAll('.banner-image').forEach(function (wrap) {
+        var slides = Array.from(wrap.querySelectorAll('.slide'));
+        if (slides.length <= 1) return;
+        var cur = 0, timer = null;
+
+        wrap.addEventListener('mouseenter', function () {
+            timer = setInterval(function () {
+                slides[cur].classList.remove('active');
+                cur = (cur + 1) % slides.length;
+                slides[cur].classList.add('active');
+            }, 1000);
+        });
+
+        wrap.addEventListener('mouseleave', function () {
+            clearInterval(timer);
+            timer = null;
+            slides[cur].classList.remove('active');
+            cur = 0;
+            slides[0].classList.add('active');
+        });
+    });
+
+    /* ---- Init: restore language & fetch post titles ---- */
+    var savedLang = localStorage.getItem('lang') || 'zh-tw';
+    applyLang(savedLang);
+
+    [1, 2, 3, 4, 5].forEach(function (id) {
+        fetch('../personal_blog/' + id + '/title.txt')
+            .then(function (r) { return r.text(); })
+            .then(function (t) {
+                postTitles[id] = t.split('\n').map(function (l) { return l.trim(); });
+                applyPostTitle(id);
+            })
+            .catch(function () {});
+    });
+
+})();
+</script>
+
+</body>
+</html>
