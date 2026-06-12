@@ -1,5 +1,8 @@
 // Simple i18n (internationalization) system
 
+const LANGS = ['zh-tw', 'zh-cn', 'en', 'ja'];
+const LANG_LABELS = { 'zh-tw': '繁', 'zh-cn': '简', 'en': 'EN', 'ja': '日' };
+
 const i18nData = {
     'zh-tw': {
         nav_brand: '貓咪大魔丸 の Profile',
@@ -33,40 +36,46 @@ const i18nData = {
 
 function setLang(lang) {
     localStorage.setItem('lang', lang);
-    
-    // Update language button display
-    const langBtn = document.getElementById('lang-btn');
-    if (langBtn) {
-        const langLabels = {
-            'zh-tw': '繁',
-            'zh-cn': '简',
-            'en': 'EN',
-            'ja': '日'
-        };
-        langBtn.textContent = langLabels[lang] || '繁';
-    }
-    
-    // Update all elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (i18nData[lang] && i18nData[lang][key]) {
-            el.textContent = i18nData[lang][key];
-        }
+
+    // Update language button label
+    var langBtn = document.getElementById('lang-btn');
+    if (langBtn) langBtn.textContent = LANG_LABELS[lang] || '繁';
+
+    // Update active class on menu items
+    document.querySelectorAll('.lang-menu-item').forEach(function(item, idx) {
+        item.classList.toggle('active', LANGS[idx] === lang);
     });
-    
+
+    // Update all data-i18n elements
+    var data = i18nData[lang] || i18nData['zh-tw'];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (data[key] !== undefined) el.textContent = data[key];
+    });
+
+    // Close the menu
+    var menu = document.getElementById('lang-menu');
+    if (menu) menu.classList.remove('open');
+
     // Trigger custom event for page-specific language updates
-    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: lang } }));
 }
 
 function toggleLangMenu() {
-    const menu = document.getElementById('lang-menu');
-    if (menu) {
-        menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
-    }
+    var menu = document.getElementById('lang-menu');
+    if (menu) menu.classList.toggle('open');
 }
+
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.lang-wrapper')) {
+        var menu = document.getElementById('lang-menu');
+        if (menu) menu.classList.remove('open');
+    }
+});
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-    const savedLang = localStorage.getItem('lang') || 'zh-tw';
+    var savedLang = localStorage.getItem('lang') || 'zh-tw';
     setLang(savedLang);
 });
