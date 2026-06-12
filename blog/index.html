@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貓咪大魔丸 の coslog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ====== FLOATING HEARTS BACKGROUND ====== -->
+<div class="hearts-bg" id="hearts-bg"></div>
+
+<!-- ====== STICKY NAV ====== -->
+<nav class="sticky-nav" id="sticky-nav">
+    <div class="nav-avatar">
+        <img src="../elements/iconsmall.png" alt="avatar">
+    </div>
+    <span class="nav-brand" data-i18n="nav_brand">貓咪大魔丸 の Profile</span>
+    <div class="nav-links">
+        <a href="#about" data-i18n="nav_home">主頁</a>
+        <a href="#works" data-i18n="nav_works">作品</a>
+        <a href="#contact" data-i18n="nav_contact">聯繫我</a>
+    </div>
+    <div class="lang-wrapper">
+        <button class="nav-lang" id="lang-btn" onclick="toggleLangMenu()">繁</button>
+        <div class="lang-menu" id="lang-menu">
+            <span class="lang-menu-item active" onclick="setLang('zh-tw')">繁體中文</span>
+            <span class="lang-menu-item" onclick="setLang('zh-cn')">简体中文</span>
+            <span class="lang-menu-item" onclick="setLang('en')">English</span>
+            <span class="lang-menu-item" onclick="setLang('ja')">日本語</span>
+        </div>
+    </div>
+</nav>
+
+<!-- ====== SECTION 1 — ABOUT ====== -->
+<section class="about-section" id="about">
+
+    <div class="about-space">
+        <div class="scroll-hint">
+            <span data-i18n="scroll_hint">scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </div>
+
+    <div class="about-band">
+        <div class="about-photo">
+            <img src="../elements/icon.png" alt="貓咪大魔丸">
+        </div>
+        <div class="about-info">
+            <h2 class="about-name" data-i18n="about_name">I'm 貓咪大魔丸</h2>
+            <p class="about-subtitle" data-i18n="about_subtitle">The Evil Kitty</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- ====== SECTION 2 — WORKS ====== -->
+<section class="works-section" id="works">
+    <div class="container">
+        <div class="section-label">
+            <span data-i18n="works_label">my works</span>
+        </div>
+
+        <div class="posts-list">
+
+            <a class="post-banner" href="post-1.html">
+                <div class="banner-image">
+                    <img class="slide active" src="../personal_blog/1/1.png" alt="">
+                    <img class="slide" src="../personal_blog/1/2.JPG" alt="">
+                </div>
+                <div class="banner-body">
+                    <span class="banner-tag">outdoor</span>
+                    <p class="banner-date">2026.05.18</p>
+                    <h2 class="banner-title" data-post-title="1">you know where i am, come find me</h2>
+                    <span class="read-more-btn">read more ♡</span>
+                </div>
+            </a>
+
+            <a class="post-banner" href="post-2.html">
+                <div class="banner-image">
+                    <img class="slide active" src="../personal_blog/2/1.jpg" alt="">
+                    <img class="slide" src="../personal_blog/2/2.jpg" alt="">
+                    <img class="slide" src="../personal_blog/2/3.jpg" alt="">
+                    <img class="slide" src="../personal_blog/2/4.JPG" alt="">
+                </div>
+                <div class="banner-body">
+                    <span class="banner-tag">cos</span>
+                    <p class="banner-date">2026.04.12</p>
+                    <h2 class="banner-title" data-post-title="2">貓咪耳朵不只是可愛而已</h2>
+                    <span class="read-more-btn">read more ♡</span>
+                </div>
+            </a>
+
+            <a class="post-banner" href="post-3.html">
+                <div class="banner-image">
+                    <img class="slide active" src="../personal_blog/3/1.jpg" alt="">
+                    <img class="slide" src="../personal_blog/3/2.jpg" alt="">
+                    <img class="slide" src="../personal_blog/3/3.jpg" alt="">
+                </div>
+                <div class="banner-body">
+                    <span class="banner-tag">food</span>
+                    <p class="banner-date">2026.03.30</p>
+                    <h2 class="banner-title" data-post-title="3">得吃的部分</h2>
+                    <span class="read-more-btn">read more ♡</span>
+                </div>
+            </a>
+
+            <a class="post-banner" href="post-4.html">
+                <div class="banner-image">
+                    <img class="slide active" src="../personal_blog/4/1.JPG" alt="">
+                    <img class="slide" src="../personal_blog/4/2.jpg" alt="">
+                    <img class="slide" src="../personal_blog/4/3.jpg" alt="">
+                </div>
+                <div class="banner-body">
+                    <span class="banner-tag">city</span>
+                    <p class="banner-date">2026.03.10</p>
+                    <h2 class="banner-title" data-post-title="4">遊走在城市，也是任務的一部分</h2>
+                    <span class="read-more-btn">read more ♡</span>
+                </div>
+            </a>
+
+            <a class="post-banner" href="post-5.html">
+                <div class="banner-image">
+                    <img class="slide active" src="../personal_blog/5/1.jpg" alt="">
+                    <img class="slide" src="../personal_blog/5/2.jpg" alt="">
+                    <img class="slide" src="../personal_blog/5/3.jpg" alt="">
+                    <img class="slide" src="../personal_blog/5/4.jpg" alt="">
+                    <img class="slide" src="../personal_blog/5/5.jpg" alt="">
+                </div>
+                <div class="banner-body">
+                    <span class="banner-tag">cats</span>
+                    <p class="banner-date">2026.02.14</p>
+                    <h2 class="banner-title" data-post-title="5">貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓貓</h2>
+                    <span class="read-more-btn">read more ♡</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- ====== SECTION 3 — CONTACT ====== -->
+<section class="contact-section" id="contact">
+
+    <div class="contact-content">
+        <a class="qr-row" href="https://www.facebook.com/profile.php?id=100038332429070" target="_blank" rel="noopener">
+            <span class="qr-label" data-i18n="contact_fb">加我 FB</span>
+            <div class="qr-card">
+                <img src="../elements/fb.png" alt="Facebook QR">
+            </div>
+        </a>
+        <a class="qr-row" href="https://www.instagram.com/hachimi_cos.666/" target="_blank" rel="noopener">
+            <span class="qr-label" data-i18n="contact_ig">追我 IG</span>
+            <div class="qr-card">
+                <img src="../elements/ig.png" alt="Instagram QR">
+                <span class="qr-handle">HACHIMI_COS.666</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Doll decorations scattered at the bottom -->
+    <div class="dolls-strip">
+        <img class="doll-img" src="../elements/1.png" alt="" style="left:-1%;height:262px">
+        <img class="doll-img" src="../elements/2.png" alt="" style="left:10%;height:238px">
+        <img class="doll-img" src="../elements/3.png" alt="" style="left:23%;height:254px">
+        <img class="doll-img" src="../elements/4.png" alt="" style="left:37%;height:275px">
+        <img class="doll-img" src="../elements/5.png" alt="" style="left:52%;height:260px">
+        <img class="doll-img" src="../elements/6.png" alt="" style="left:66%;height:242px">
+        <img class="doll-img" src="../elements/7.png" alt="" style="left:80%;height:256px">
+    </div>
+
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="site-footer">
+    <p>✦ &nbsp; made with ♡ &nbsp; · &nbsp; coslog &nbsp; ✦</p>
+</footer>
+
+<script>
+(function () {
+
+    /* ---- i18n ---- */
+    var LANGS = ['zh-tw', 'zh-cn', 'en', 'ja'];
+    var LANG_LABELS = { 'zh-tw': '繁', 'zh-cn': '简', 'en': 'EN', 'ja': '日' };
+    var LANG_LINE   = { 'zh-tw': 0, 'zh-cn': 1, 'en': 2, 'ja': 3 };
+
+    var i18n = {
+        'zh-tw': {
+            'nav_brand':     '貓咪大魔丸 の Profile',
+            'nav_home':      '主頁',
+            'nav_works':     '作品',
+            'nav_contact':   '聯繫我',
+            'about_name':    "I'm 貓咪大魔丸",
+            'about_subtitle':'The Evil Kitty',
+            'scroll_hint':   'scroll',
+            'works_label':   'my works',
+            'contact_fb':    '加我 FB',
+            'contact_ig':    '追我 IG',
+        },
+        'zh-cn': {
+            'nav_brand':     '猫咪大魔丸 の Profile',
+            'nav_home':      '主页',
+            'nav_works':     '作品',
+            'nav_contact':   '联系我',
+            'about_name':    "I'm 猫咪大魔丸",
+            'about_subtitle':'The Evil Kitty',
+            'scroll_hint':   'scroll',
+            'works_label':   '我的作品',
+            'contact_fb':    '加我 FB',
+            'contact_ig':    '追我 IG',
+        },
+        'en': {
+            'nav_brand':     '貓咪大魔丸 · Profile',
+            'nav_home':      'Home',
+            'nav_works':     'Works',
+            'nav_contact':   'Contact',
+            'about_name':    "I'm 貓咪大魔丸",
+            'about_subtitle':'The Evil Kitty',
+            'scroll_hint':   'scroll',
+            'works_label':   'my works',
+            'contact_fb':    'Add me on FB',
+            'contact_ig':    'Follow me on IG',
+        },
+        'ja': {
+            'nav_brand':     '猫耳魔丸 の Profile',
+            'nav_home':      'ホーム',
+            'nav_works':     '作品',
+            'nav_contact':   '連絡先',
+            'about_name':    "I'm 貓咪大魔丸",
+            'about_subtitle':'The Evil Kitty',
+            'scroll_hint':   'スクロール',
+            'works_label':   '作品集',
+            'contact_fb':    'FBを追加',
+            'contact_ig':    'IGをフォロー',
+        }
+    };
+
+    var currentLang = 'zh-tw';
+    var postTitles  = {};   /* { 1: ['zh-tw', 'zh-cn', 'en', 'ja'], ... } */
+
+    /* Apply one post's title to its banner element */
+    function applyPostTitle(id) {
+        var el    = document.querySelector('[data-post-title="' + id + '"]');
+        var lines = postTitles[id];
+        if (!el || !lines || !lines.length) return;
+        var idx = LANG_LINE[currentLang] !== undefined ? LANG_LINE[currentLang] : 0;
+        el.textContent = lines[idx] || el.textContent;
+    }
+
+    function applyLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = lang === 'zh-tw' ? 'zh-TW' : lang === 'zh-cn' ? 'zh-CN' : lang;
+        var data = i18n[lang] || i18n['zh-tw'];
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+            var key = el.getAttribute('data-i18n');
+            if (data[key] !== undefined) el.textContent = data[key];
+        });
+        var btn = document.getElementById('lang-btn');
+        if (btn) btn.textContent = LANG_LABELS[lang] || lang;
+        document.querySelectorAll('.lang-menu-item').forEach(function (item, idx) {
+            item.classList.toggle('active', LANGS[idx] === lang);
+        });
+        /* update all banner titles */
+        [1, 2, 3, 4, 5].forEach(applyPostTitle);
+    }
+
+    window.setLang = function (lang) {
+        applyLang(lang);
+        var menu = document.getElementById('lang-menu');
+        if (menu) menu.classList.remove('open');
+    };
+
+    window.toggleLangMenu = function () {
+        var menu = document.getElementById('lang-menu');
+        if (menu) menu.classList.toggle('open');
+    };
+
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.lang-wrapper')) {
+            var menu = document.getElementById('lang-menu');
+            if (menu) menu.classList.remove('open');
+        }
+    });
+
+    /* ---- Floating Hearts ---- */
+    var container = document.getElementById('hearts-bg');
+    var COUNT = 26;
+    var COLORS = [
+        [255, 182, 200],
+        [255, 150, 175],
+        [255, 105, 140],
+        [255, 200, 215],
+        [240,  96, 128],
+    ];
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    for (var i = 0; i < COUNT; i++) {
+        (function () {
+            var el = document.createElement('div');
+            el.className = 'heart';
+            el.textContent = '♥';
+
+            var size    = rand(18, 108);
+            var blur    = Math.pow((size - 18) / 90, 0.75) * 13;
+            var c       = COLORS[Math.floor(Math.random() * COLORS.length)];
+            var opacity = rand(0.25, 0.62);
+            var xPct    = rand(0, 52);
+            var drift   = rand(-25, 55);
+            var rot     = rand(-22, 22);
+            var dur     = rand(11, 24);
+            var delay   = rand(0, 18);
+
+            el.style.cssText = [
+                'bottom:-120px',
+                'left:' + xPct.toFixed(1) + '%',
+                'font-size:' + size.toFixed(1) + 'px',
+                'color:rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + opacity.toFixed(2) + ')',
+                'filter:blur(' + blur.toFixed(1) + 'px)',
+                '--drift:' + drift.toFixed(1) + 'px',
+                '--rot:' + rot.toFixed(1) + 'deg',
+                'animation:floatHeart ' + dur.toFixed(1) + 's linear ' + delay.toFixed(1) + 's infinite',
+                'position:absolute',
+                'line-height:1',
+                'pointer-events:none',
+            ].join(';');
+
+            container.appendChild(el);
+        })();
+    }
+
+    /* ---- Sticky Nav ---- */
+    var stickyNav = document.getElementById('sticky-nav');
+
+    window.addEventListener('scroll', function () {
+        stickyNav.classList.toggle('visible', window.scrollY > 320);
+    }, { passive: true });
+
+    /* ---- Hover-triggered loop slideshow -

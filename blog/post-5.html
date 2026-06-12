@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貓咪大魔丸 の coslog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hearts-bg" id="hearts-bg"></div>
+
+<nav class="sticky-nav visible" id="sticky-nav">
+    <div class="nav-avatar"><img src="../elements/iconsmall.png" alt="avatar"></div>
+    <span class="nav-brand" data-i18n="nav_brand">貓咪大魔丸 の Profile</span>
+    <div class="nav-links">
+        <a href="index.html" data-i18n="nav_home">主頁</a>
+        <a href="index.html#works" data-i18n="nav_works">作品</a>
+        <a href="index.html#contact" data-i18n="nav_contact">聯繫我</a>
+    </div>
+    <div class="lang-wrapper">
+        <button class="nav-lang" id="lang-btn" onclick="toggleLangMenu()">繁</button>
+        <div class="lang-menu" id="lang-menu">
+            <span class="lang-menu-item active" onclick="setLang('zh-tw')">繁體中文</span>
+            <span class="lang-menu-item" onclick="setLang('zh-cn')">简体中文</span>
+            <span class="lang-menu-item" onclick="setLang('en')">English</span>
+            <span class="lang-menu-item" onclick="setLang('ja')">日本語</span>
+        </div>
+    </div>
+</nav>
+
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-overlay" id="lightbox-overlay"></div>
+    <div class="lightbox-box">
+        <img id="lightbox-img" src="" alt="">
+        <button class="lightbox-close" id="lightbox-close">✕</button>
+    </div>
+</div>
+
+<div class="post-eg-layout">
+    <div class="post-bg-heart post-bg-heart--1">♥</div>
+    <div class="post-bg-heart post-bg-heart--2">♥</div>
+
+    <div class="post-eg-photos photos-5">
+        <div class="post-photo-card"><img src="../personal_blog/5/1.jpg" alt=""></div>
+        <div class="post-photo-card"><img src="../personal_blog/5/2.jpg" alt=""></div>
+        <div class="post-photo-card"><img src="../personal_blog/5/3.jpg" alt=""></div>
+        <div class="post-photo-card"><img src="../personal_blog/5/4.jpg" alt=""></div>
+        <div class="post-photo-card"><img src="../personal_blog/5/5.jpg" alt=""></div>
+    </div>
+
+    <div class="post-eg-text">
+        <a href="index.html" class="post-eg-back" id="post-eg-back">← 返回</a>
+        <h1 class="post-eg-title" id="post-eg-title"></h1>
+        <div class="post-eg-body" id="post-eg-body"></div>
+    </div>
+</div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/hearts.js"></script>
+<script>
+    var POST_ID = 5;
+    var LANG_LINE = { 'zh-tw': 0, 'zh-cn': 1, 'en': 2, 'ja': 3 };
+    var BACK_TEXT  = { 'zh-tw': '← 返回', 'zh-cn': '← 返回', 'en': '← Back', 'ja': '← 戻る' };
+    var titleLines = [], profileLines = [];
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        initLightbox();
+        await Promise.all([fetchTitle(), fetchProfile()]);
+        renderContent(localStorage.getItem('lang') || 'zh-tw');
+    });
+
+    function initLightbox() {
+        document.querySelectorAll('.post-photo-card').forEach(function (card) {
+            card.style.cursor = 'zoom-in';
+            card.addEventListener('click', function () {
+                document.getElementById('lightbox-img').src = card.querySelector('img').src;
+                document.getElementById('lightbox').classList.add('open');
+            });
+        });
+        document.getElementById('lightbox-overlay').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+    }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+
+    async function fetchTitle() {
+        try { var r = await fetch('../personal_blog/' + POST_ID + '/title.txt'); titleLines = (await r.text()).split('\n').map(function(l){return l.trim();}); } catch(e){}
+    }
+    async function fetchProfile() {
+        try { var r = await fetch('../personal_blog/' + POST_ID + '/profile.txt'); profileLines = (await r.text()).split('\n').map(function(l){return l.trim();}); } catch(e){}
+    }
+
+    function renderContent(lang) {
+        var idx = LANG_LINE[lang] !== undefined ? LANG_LINE[lang] : 0;
+        var title = titleLines[idx] || '';
+        document.getElementById('post-eg-title').textContent = title;
+        document.title = title || '貓咪大魔丸 の coslog';
+        document.getElementById('post-eg-back').textContent = BACK_TEXT[lang] || '← 返回';
+        document.getElementById('post-eg-body').textContent = profileLines[idx] || '';
+    }
+    window.addEventListener('languageChanged', function (e) {
+        renderContent((e.detail && e.detail.lang) || localStorage.getItem('lang') || 'zh-tw');
+    });
+</script>
+</body>
+</html>
