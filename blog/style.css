@@ -954,25 +954,122 @@ body {
 /* ==========================================
    RESPONSIVE
    ========================================== */
+
+/* ---- Medium screens (tablets) ---- */
+@media (max-width: 900px) {
+    .about-band { padding: 22px 36px 22px 230px; }
+    .post-eg-photos { flex: 0 0 52%; }
+    .post-eg-text { flex: 0 0 48%; padding: 60px 32px 60px 20px; }
+}
+
+/* ---- Mobile (≤768px) ---- */
 @media (max-width: 768px) {
-    .about-band { padding: 20px 24px 20px 200px; }
-    .about-photo { width: 145px; height: 145px; left: 40px; }
+
+    /* Nav */
+    .sticky-nav { padding: 0 16px; gap: 10px; height: 56px; }
+    .nav-avatar { width: 38px; height: 38px; }
+    .nav-brand { font-size: 12px; letter-spacing: 1px; }
+    .nav-links { gap: 14px; }
+    .nav-links a, .nav-lang { font-size: 13px; }
+
+    /* About */
+    .about-band { padding: 20px 20px 20px 192px; min-height: 90px; }
+    .about-photo { width: 140px; height: 140px; left: 36px; }
+    .about-name { font-size: clamp(20px, 5vw, 30px); letter-spacing: 3px; }
+
+    /* Post banners */
     .post-banner { grid-template-columns: 1fr; min-height: auto; }
     .banner-image { aspect-ratio: 4/3; }
     .banner-body { padding: 28px 24px; }
     .banner-title { font-size: 20px; }
+
+    /* ---- Post EG layout: stack vertically, reflow photos ---- */
+    .post-eg-layout {
+        flex-direction: column;
+        padding-top: 56px;
+        min-height: unset;
+    }
+    /* Photo collage area → flex wrap (2-col grid feel) */
+    .post-eg-photos {
+        flex: none !important;
+        width: 100% !important;
+        min-height: auto !important;
+        position: static !important;
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 24px 16px 12px;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    /* All absolutely-positioned photo cards → static 2-col */
+    .post-photo-card {
+        position: static !important;
+        width: calc(50% - 6px) !important;
+        height: 170px !important;
+        transform: rotate(-1.2deg) !important;
+    }
+    .post-photo-card:nth-child(even) { transform: rotate(1.4deg) !important; }
+    /* 2-photo: full-width cards */
+    .photos-2 .post-photo-card { width: calc(100% - 0px) !important; height: 210px !important; }
+    /* Text area */
+    .post-eg-text {
+        flex: none !important;
+        width: 100% !important;
+        padding: 16px 24px 48px !important;
+    }
+    /* Hide decorative hearts to save space */
+    .post-bg-heart { display: none; }
+
+    /* Gallery */
     .gallery-2,.gallery-3,.gallery-4,.gallery-5 { grid-template-columns: 1fr; }
     .gallery-3 .g-main,.gallery-5 .g-main { grid-column: auto; aspect-ratio: 4/3; }
     .post-nav { flex-direction: column; }
     .back-link { position: static; display: inline-flex; margin-bottom: 24px; }
     .post-hero { padding: 28px 24px 40px; }
-    .sticky-nav { padding: 0 16px; }
-    .nav-brand { font-size: 13px; }
-    .nav-links { gap: 16px; }
-    .nav-links a, .nav-lang { font-size: 14px; }
+
+    /* Contact */
     .qr-row { flex-direction: column; gap: 16px; align-items: center; }
-    .contact-content { padding: 60px 24px 260px; align-items: center; }
-    .dolls-strip { height: 210px; }
-    .doll-img { height: 188px !important; }
+    .contact-content { padding: 60px 24px 230px; align-items: center; }
+    .dolls-strip { height: 200px; }
+    .doll-img { height: 178px !important; }
     .doll-img:nth-child(3), .doll-img:nth-child(6) { display: none; }
+}
+
+/* ---- Small phones (≤480px) ---- */
+@media (max-width: 480px) {
+
+    /* Nav — hide brand, keep links + lang */
+    .nav-brand { display: none; }
+    .sticky-nav { gap: 8px; }
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 13px; letter-spacing: 0.5px; }
+
+    /* About */
+    .about-band { padding: 12px 14px 12px 144px; }
+    .about-photo { width: 114px; height: 114px; left: 16px; border-width: 5px; }
+    .about-name { font-size: 18px; letter-spacing: 2px; }
+    .about-subtitle { font-size: 13px; }
+
+    /* Post EG — single column on very small screens */
+    .post-photo-card {
+        width: calc(100% - 0px) !important;
+        height: 200px !important;
+        transform: rotate(-1deg) !important;
+    }
+    .post-photo-card:nth-child(even) { transform: rotate(1deg) !important; }
+
+    /* Contact */
+    .contact-content { padding: 40px 16px 196px; }
+    .dolls-strip { height: 170px; }
+    .doll-img { height: 150px !important; }
+    .doll-img:nth-child(2), .doll-img:nth-child(5) { display: none; }
+    .qr-card img { width: 130px; height: 130px; }
+    .qr-label { font-size: clamp(20px, 6vw, 32px); min-width: 120px; letter-spacing: 4px; }
+
+    /* Works section padding */
+    .works-section { padding: 48px 0 60px; }
+    .container { padding: 0 16px; }
+    .banner-title { font-size: 18px; }
+    .banner-body { padding: 22px 18px; }
 }
